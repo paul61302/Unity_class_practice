@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     bool ControlSound = true;
+
     [Header("聲音的按鈕")]
     public Image SoundButtonImage;
     [Header("聲音開啟圖")]
