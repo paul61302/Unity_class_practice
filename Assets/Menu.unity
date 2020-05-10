@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1074,6 +1074,7 @@ MonoBehaviour:
   SoundCloseSprite: {fileID: 21300000, guid: ee0b71f75b01641449ee50230ab87913, type: 3}
   Soundslider: {fileID: 32985886}
   ScreenSizeDropdown: {fileID: 1048681066}
+  LastSound: 0
 --- !u!1 &670521966
 GameObject:
   m_ObjectHideFlags: 0

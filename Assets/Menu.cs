@@ -18,6 +18,7 @@ public class Menu : MonoBehaviour
     public Slider Soundslider;
     [Header("下拉選單")]
     public Dropdown ScreenSizeDropdown;
+    public float LastSound = 1;
 
     private void Update()
     {
@@ -86,6 +87,7 @@ public class Menu : MonoBehaviour
             AudioListener.pause = false;
             // 聲音的按鈕圖換成 開聲音的圖片
             SoundButtonImage.sprite = SoundOpenSprite;
+            Soundslider.value = LastSound;
             
         }
         else
@@ -95,7 +97,8 @@ public class Menu : MonoBehaviour
             // 聲音的按鈕圖換成 關聲音的圖片
             SoundButtonImage.sprite = SoundCloseSprite;
 
-            //Soundslider.value = 0;
+            LastSound = Soundslider.value;
+            Soundslider.value = 0;
 
         }
     }
