@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -22,13 +23,46 @@ public class Player : MonoBehaviour
     public float PlayerHP;
     // 程式中計算玩家的血量數值
     float ScripHP;
+    [Header("玩家血條")]
+    public Image HPBar;
+    [Header("打死敵機加分")]
+    public float AddScore;
+    float ScripScore;
+    public Text ScoreText;
 
+    // 儲存分數的欄位
+    string SaveScore = "SaveScre";
 
     // Start is called before the first frame update
     void Start()
     {
         // 程式中的血量 = 屬性面板中調整的玩家血量數值
         ScripHP = PlayerHP;
+    }
+    // 敵機子彈打到玩家，玩家進行扣血
+    public void HurtPlayer(float hurt)
+    {
+        // 玩家血量遞減
+        ScripHP -= hurt;
+        // 限制玩家的血量介於0~自己設定的數值
+        ScripHP = Mathf.Clamp(ScripHP, 0, PlayerHP);
+        // 玩家血條的數值 = 程式中血量/自己設定的血量數值
+        HPBar.fillAmount = ScripHP / PlayerHP;
+        
+        // 如果玩家血量 <= 0
+        if (ScripHP <= 0)
+        {
+            PlayerPrefs.SetFloat(SaveScore, ScripScore);
+            // 跳到遊戲結束畫面
+            Application.LoadLevel("scord");
+        }
+    }
+
+    // 玩家子彈打到怪物，玩家進行加分
+    public void Score()
+    {
+        ScripScore += AddScore;
+        ScoreText.text = "Score:" + ScripScore;
     }
 
     // Update is called once per frame

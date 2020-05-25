@@ -18,7 +18,7 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         ShootingSound = GameObject.Find("poyo").GetComponent<AudioSource>();
-        InvokeRepeating("CreateBullet", CreateTime, CreateTime);
+        InvokeRepeating("CreateBullet", 0f, CreateTime);
     }
 
     // Update is called once per frame

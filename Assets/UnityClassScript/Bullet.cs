@@ -43,6 +43,7 @@ public class Bullet : MonoBehaviour
             //other.transform.position兩個物件碰撞的位置
             //other.transform.rotation兩個物件碰撞的旋轉值
             Instantiate(Effect, other.transform.position, other.transform.rotation);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Score();
             //爆炸音效
             EffectAudio.Play();
             //敵機消滅
@@ -57,5 +58,10 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
         // 敵機子彈打到玩家
+        if (other.GetComponent<Collider2D>().tag == "Player" && gameObject.tag == "EnemyBullet")
+        {
+            // 敵機打到玩家呼叫玩家物件身上的Player腳本中的HurtPlayer進行扣血
+            other.GetComponent<Player>().HurtPlayer(10f);
+        }
     }
 }
