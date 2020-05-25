@@ -50,5 +50,12 @@ public class Bullet : MonoBehaviour
             //自己子彈物件被消滅
             Destroy(gameObject);
         }
+        // 玩家子彈打到敵機子彈
+        if(other.GetComponent<Collider2D>().tag =="EnemyBullet" && gameObject.tag == "PlayerBullet")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+        // 敵機子彈打到玩家
     }
 }

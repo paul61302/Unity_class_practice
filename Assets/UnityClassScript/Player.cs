@@ -17,10 +17,18 @@ public class Player : MonoBehaviour
     {
         鍵盤=0,手機陀螺儀=1,滑鼠=2,手機搖桿=3
     }
+
+    [Header("玩家血量")]
+    public float PlayerHP;
+    // 程式中計算玩家的血量數值
+    float ScripHP;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // 程式中的血量 = 屬性面板中調整的玩家血量數值
+        ScripHP = PlayerHP;
     }
 
     // Update is called once per frame
